@@ -36,11 +36,16 @@ def makedirs(path):
             raise
 
 def find_process_by_name(name):
-    ps = subprocess.Popen("ps -eaf | grep {name}".format(name=name), shell=True, stdout=subprocess.PIPE)
+    ps = subprocess.Popen(
+        "ps -eaf | grep {name}".format(name=name), 
+        shell=True, stdout=subprocess.PIPE)
     output = ps.stdout.read()
     ps.stdout.close()
     ps.wait()
     return output
+
+def find_java_processes():
+    return find_process_by_name('java')
 
 def get_options(args):
     """

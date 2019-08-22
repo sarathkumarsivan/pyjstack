@@ -63,7 +63,7 @@ def get_options(args):
         '--quiet', help="Make little or no noise while taking thread dump",
         action="store_const", dest="logging_level", const=logging.CRITICAL)
     parser.add_argument(
-        '--pid', required=True,
+        '--pid', required=False,
         help='Process ID of the Java process')
     options = parser.parse_args(args)
     return options
@@ -80,7 +80,13 @@ def main():
     logger.setLevel(level=options.logging_level)
     logger.setLevel(level=logging.DEBUG)
     setup()
-    jstack(options.pid)
+    if options.pid:
+        jstack(options.pid)
+    else:
+        logger.info("Finding all the Java processes")
+        print(find_java_processes())
+        pid = input("Which process would you like to choose?")
+        jstack(pid)
     cleanup()
 
 if __name__ == '__main__':

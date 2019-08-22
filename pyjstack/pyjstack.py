@@ -7,6 +7,7 @@ import tempfile
 import argparse
 import sys
 import time
+import subprocess
 
 from configurer import configure_logging_console
 
@@ -33,6 +34,13 @@ def makedirs(path):
             pass
         else:
             raise
+
+def find_process_by_name(name):
+    ps = subprocess.Popen("ps -eaf | grep {name}".format(name=name), shell=True, stdout=subprocess.PIPE)
+    output = ps.stdout.read()
+    ps.stdout.close()
+    ps.wait()
+    return output
 
 def get_options(args):
     """

@@ -35,7 +35,7 @@ def makedirs(path):
         else:
             raise
 
-def find_process_by_name(name):
+def find_processes(name):
     ps = subprocess.Popen(
         "ps -eaf | grep {name}".format(name=name), 
         shell=True, stdout=subprocess.PIPE)
@@ -45,7 +45,7 @@ def find_process_by_name(name):
     return output
 
 def find_java_processes():
-    return find_process_by_name('java')
+    return find_processes('java')
 
 def get_options(args):
     """

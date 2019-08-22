@@ -37,8 +37,7 @@ def makedirs(path):
 
 def find_processes(name):
     session = subprocess.Popen(
-        "ps -eaf | grep {name}".format(name=name), 
-        shell=True, stdout=subprocess.PIPE)
+        "ps -eaf | grep {name}".format(name=name), shell=True, stdout=subprocess.PIPE)
     output = session.stdout.read()
     session.stdout.close()
     session.wait()

@@ -36,12 +36,12 @@ def makedirs(path):
             raise
 
 def find_processes(name):
-    ps = subprocess.Popen(
+    session = subprocess.Popen(
         "ps -eaf | grep {name}".format(name=name), 
         shell=True, stdout=subprocess.PIPE)
-    output = ps.stdout.read()
-    ps.stdout.close()
-    ps.wait()
+    output = session.stdout.read()
+    session.stdout.close()
+    session.wait()
     return output
 
 def find_java_processes():

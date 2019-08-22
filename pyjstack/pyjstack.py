@@ -64,6 +64,12 @@ def get_options(args):
     parser.add_argument(
         '--pid', required=False,
         help='Process ID of the Java process')
+    parser.add_argument(
+        '--count', required=False,
+        help='Count of thread dumps to be collected')
+    parser.add_argument(
+        '--count', required=False,
+        help='Count of thread dumps to be collected')
     options = parser.parse_args(args)
     return options
 

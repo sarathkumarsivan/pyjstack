@@ -66,10 +66,10 @@ def get_options(args):
         '--pid', required=False,
         help='Process ID of the Java process')
     parser.add_argument(
-        '--count', required=False,
+        '--count', required=False, default=12, type=int,
         help='Count of thread dumps to be collected')
     parser.add_argument(
-        '--delay', required=False,
+        '--delay', required=False, default=1, type=int,
         help='Delay in between collecting thread dumps, in seconds')
     options = parser.parse_args(args)
     return options
@@ -101,7 +101,7 @@ def main():
     else:
         logger.info("Finding all the Java processes")
         print(find_java_processes())
-        pid = input("Which process would you like to choose?")
+        pid = input("Which process would you like to choose?: ")
         jstack(pid)
     cleanup()
 

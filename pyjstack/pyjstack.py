@@ -88,7 +88,6 @@ def execute(options):
         time.sleep(options.delay)
         count -= 1
 
-
 def main():
     start_time = time.time()  # assumes that task takes at least a tenth of second to run.
     options = get_options(sys.argv[1:])

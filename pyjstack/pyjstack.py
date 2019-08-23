@@ -70,7 +70,7 @@ def get_options(args):
         help='Count of thread dumps to be collected')
     parser.add_argument(
         '--delay', required=False, default=1, type=int,
-        help='Delay in between collecting thread dumps, in seconds')
+        help='Delay in between collecting thread dumps, (in seconds)')
     options = parser.parse_args(args)
     return options
 

@@ -9,6 +9,7 @@ import sys
 import time
 import subprocess
 
+from time import sleep
 from configurer import configure_logging_console
 
 # Logger instance for pyjstack.
@@ -68,8 +69,8 @@ def get_options(args):
         '--count', required=False,
         help='Count of thread dumps to be collected')
     parser.add_argument(
-        '--count', required=False,
-        help='Count of thread dumps to be collected')
+        '--delay', required=False,
+        help='Delay in between collecting thread dumps, in seconds')
     options = parser.parse_args(args)
     return options
 
@@ -79,12 +80,22 @@ def jstack(pid):
     status = os.system(command)
     logger.debug('status: %s', status)
 
+def execute(options):
+    count = options.count
+    while count > 0:
+        logger.debug('Runing instance: %s', count)
+        jstack(options.pid)
+        time.sleep(options.delay)
+        count -= 1
+
+
 def main():
     start_time = time.time()  # assumes that task takes at least a tenth of second to run.
     options = get_options(sys.argv[1:])
     logger.setLevel(level=options.logging_level)
     logger.setLevel(level=logging.DEBUG)
     setup()
+    logger.info("options: %s", options)
     if options.pid:
         jstack(options.pid)
     else:

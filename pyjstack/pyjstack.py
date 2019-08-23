@@ -105,6 +105,7 @@ def main():
         options.pid = pid
         execute(options)
     cleanup()
+    logger.info("Task completed in %s seconds" % (time.time() - start_time))
 
 if __name__ == '__main__':
     main()

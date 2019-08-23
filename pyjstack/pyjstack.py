@@ -97,12 +97,13 @@ def main():
     setup()
     logger.info("options: %s", options)
     if options.pid:
-        jstack(options.pid)
+        execute(options)
     else:
         logger.info("Finding all the Java processes")
         print(find_java_processes())
         pid = input("Which process would you like to choose?: ")
-        jstack(pid)
+        options.pid = pid
+        execute(options)
     cleanup()
 
 if __name__ == '__main__':

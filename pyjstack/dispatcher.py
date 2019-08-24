@@ -29,10 +29,8 @@ def send(server, from_email, to_email, subject, content, attachment):
     message['From'] = from_email
     message['To'] = to_email
     message['Subject'] = subject
-
     message.attach(MIMEText(content, 'html'))
     message.attach(attachment)
-
     server.sendmail(from_email, to_email, message.as_string()) 
     server.quit()
 

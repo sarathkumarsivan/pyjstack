@@ -36,6 +36,6 @@ def send(server, from_email, to_email, subject, content, attachment):
     server.sendmail(from_email, to_email, message.as_string()) 
     server.quit()
 
-def send(smtp_server, smtp_port, email, password, from_email, to_email, subject, content, attachment):
-    server = connect(smtp_server, smtp_port, email, password)
+def send(smtp_server, smtp_port, from_email, password, to_email, subject, content, attachment):
+    server = connect(smtp_server, smtp_port, from_email, password)
     send(server, from_email, to_email, subject, content, attachment)

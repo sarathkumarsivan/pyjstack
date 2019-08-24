@@ -11,6 +11,11 @@ def connect(smtp_server, smtp_port, email, password):
     server.login(email, password)
     return server
 
+def connect(smtp_server, smtp_port=25):
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    return server
+
 def attach(path):
     filename = os.path.basename(path)
     attachment = open(path, "rb")
@@ -18,7 +23,6 @@ def attach(path):
     part.set_payload(attachment.read())
     encoders.encode_base64(part)
     part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-
 
 def send(server, from_email, to_email, subject, content, attachment):
     message = MIMEMultipart()
@@ -31,7 +35,6 @@ def send(server, from_email, to_email, subject, content, attachment):
 
     server.sendmail(from_email, to_email, message.as_string()) 
     server.quit()
-
 
 def send(smtp_server, smtp_port, email, password, from_email, 
 to_email, subject, content, attachment):

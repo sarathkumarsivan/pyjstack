@@ -20,13 +20,16 @@ logger = configure_logging_console(logging.getLogger('pyjstack'), format)
 tempdir = tempfile.gettempdir()
 workspace = '{tempdir}/pyjstack-{uuid}'.format(tempdir = tempdir, uuid = uuid.uuid4())
 
+
 def setup():
     logger.debug('Setting up temporary workspace: %s', workspace)
     makedirs(workspace)
-    
+
+
 def cleanup():
     logger.debug('Cleaning up temporary workspace: %s', workspace)
     shutil.rmtree(workspace)
+
 
 def makedirs(path):
     try:
@@ -37,6 +40,7 @@ def makedirs(path):
         else:
             raise
 
+
 def find_processes(name):
     session = subprocess.Popen(
         "ps -eaf | grep {name}".format(name=name), shell=True, stdout=subprocess.PIPE)
@@ -45,8 +49,17 @@ def find_processes(name):
     session.wait()
     return output
 
+
 def find_java_processes():
+    """
+    Find the list of Java processes running on the current node.
+
+    :param: None
+    :returns: output: The console output contains the process details.
+    :raises: None
+    """
     return find_processes('java')
+
 
 def get_options(args):
     """

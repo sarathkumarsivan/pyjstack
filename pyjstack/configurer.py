@@ -60,9 +60,12 @@ def configure_logging_file(logger, format, file):
     logger.addHandler(handler)
     return logger
 
-
 def read_json_conf(filename):
     conf = None
     with open(filename) as json_conf_file:
         conf = json.load(json_conf_file)
     return conf
+
+def read_json_conf(filename, conf):
+    with open(filename, 'w') as json_conf_file:
+        json.dump(conf, json_conf_file)

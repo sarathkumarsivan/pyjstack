@@ -56,7 +56,7 @@ Options
 #######
 
 **--pid:**
-  The PID of your Java process.
+  The PID of your Java process. If you are running pyjstack without the pid and there are multiple Java processes running on the machine pyjstack will detect it and get the list of pids, you have to choose the pid to generate the thread dump.
 
 **--count:**
   The count indicates how many thread dumps to take.

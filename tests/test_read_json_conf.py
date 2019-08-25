@@ -18,9 +18,9 @@ class TestConfMethods(unittest.TestCase):
         self.assertEqual(to_email[0], 'user1@gmail.com')
         self.assertEqual(to_email[1], 'user2@gmail.com')
         jstack = conf['jstack']
-        self.assertEqual(email['pid'], '10023')
-        self.assertEqual(email['count'], '12')
-        self.assertEqual(email['delay'], '2')
+        self.assertEqual(jstack['pid'], '10023')
+        self.assertEqual(jstack['count'], '12')
+        self.assertEqual(jstack['delay'], '2')
 
 
 if __name__ == '__main__':

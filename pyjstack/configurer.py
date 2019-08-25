@@ -24,7 +24,6 @@ import logging
 import sys
 import json
 
-
 def configure_logging_console(logger, format):
     """
     Configure and enable console logging with the given format. The logging
@@ -41,7 +40,6 @@ def configure_logging_console(logger, format):
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
-
 
 def configure_logging_file(logger, format, file):
     """
@@ -61,11 +59,28 @@ def configure_logging_file(logger, format, file):
     return logger
 
 def read_json_conf(filename):
-    conf = None
+    """
+    Read configuration file from local filesystem. The configuration file should be
+    in valid JSON format.
+
+    :param filename: The JSON file which has the configuration options.
+    :returns: Configuration loaded from JSON configuration file.
+    :raises: None
+    """
     with open(filename) as json_conf_file:
-        conf = json.load(json_conf_file)
-    return conf
+        return json.load(json_conf_file)
+    return None
 
 def read_json_conf(filename, conf):
+    """
+    Write configuration options into a JSON file format. The file should be 
+    written to the local filesystem. The user who runs this process should 
+    have write permission on the given filesystem.
+
+    :param filename: The JSON file which has the configuration options.
+    :param conf: The configuration options to be written to the JSON file.
+    :returns: None
+    :raises: None
+    """
     with open(filename, 'w') as json_conf_file:
         json.dump(conf, json_conf_file)

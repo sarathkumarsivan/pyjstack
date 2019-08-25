@@ -8,9 +8,9 @@ pyjstack
 .. |coverage| image:: https://img.shields.io/badge/coverage-100%25-brightgreen
 
 
-The pyjstack command-line tool lets you to collect the Java thread dump currently running on your system., A thread dump is a snapshot of the state of all threads that are part of the process. The state of each thread is presented with a so called stack trace, which shows the contents of a thread’s stack. Some of the threads belong to the Java application you are running, while others are JVM internal threads.
+The pyjstack command-line tool lets you to collect the Java thread dump currently running on your system. A thread dump is a snapshot of the state of all threads that are part of the process. The state of each thread is presented with a so called stack trace, which shows the contents of a thread’s stack. Some of the threads belong to the Java application you are running, while others are JVM internal threads. A thread dump reveals information about an application’s thread activity that can help you diagnose problems and better optimize application and JVM performance; for example, thread dumps automatically show the occurrence of a deadlock. Deadlocks bring some or all of an application to a complete halt. The pyjstack uses the jstack utility to prints Java stack traces. 
 
-A thread dump reveals information about an application’s thread activity that can help you diagnose problems and better optimize application and JVM performance; for example, thread dumps automatically show the occurrence of a deadlock. Deadlocks bring some or all of an application to a complete halt. The pyjstack uses the jstack utility to prints Java stack traces.
+Most often a single thread dump will reveal the problem, this is especially true with deadlocks where two or more threads are waiting for locks obtained by each other. But in other cases, such as threads waiting on other processes, like IO from a database, you won't be able to detect it with a single thread dump. In this case multiple thread dumps taken over time will show the same thread waiting for the process to complete during that time span. The pyjstack can generate multiple thread dumps over time. Running pyjstack from the command line, the default is 12 thread dumps with a 1 second delay between each dump, this is configurable from the command line. If you are running pyjstack without the pid and there are multiple Java processes running on the machine pyjstack will detect it and get the list of pids, you have to choose the pid to generate the thread dump.
 
 Installation
 ------------
@@ -65,7 +65,7 @@ Options
   Enable debug level logging. You can enable verbose logging which exactly similar to the DEBUG level. If you see any unexpected behavior while issuing pyjstack, enablling this option would be a good choice to identify the problem and trace the root cause. 
 
 **--quiet:**
-  Make little or no noise during the file transfer. During the normal execution of pyjstack command, INFO level logs would be printed on the console; but if you provide --quiet option, the command would be executed silently.
+  Make little or no noise while collecting the thread dump. During the normal execution of pyjstack command, INFO level logs would be printed on the console; but if you provide --quiet option, the command would be executed silently.
 
 Supports
 --------

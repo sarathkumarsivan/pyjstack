@@ -42,6 +42,17 @@ def makedirs(path):
 
 
 def find_processes(name):
+    """
+    Find the list of processes running on the current node by process name.
+    It uses the ps Unix command to access information about processes running 
+    on your system. Using the -f option for ps you can gain additional useful 
+    information on each process in the listing: usernames (UID), process ID (PID), 
+    parent process ID (PPID) and full command lines (not just the process name).
+
+    :param: name: Process name to be searched on your system to list the processes 
+    :returns: output: The console output contains the process details.
+    :raises: None
+    """
     session = subprocess.Popen(
         "ps -eaf | grep {name}".format(name=name), shell=True, stdout=subprocess.PIPE)
     output = session.stdout.read()

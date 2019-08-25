@@ -22,6 +22,7 @@
 
 import logging
 import sys
+import json
 
 
 def configure_logging_console(logger, format):
@@ -58,3 +59,10 @@ def configure_logging_file(logger, format, file):
     handler.setFormatter(format)
     logger.addHandler(handler)
     return logger
+
+
+def read_json_conf(filename):
+    conf = None
+    with open(filename) as json_conf_file:
+        conf = json.load(json_conf_file)
+    return conf

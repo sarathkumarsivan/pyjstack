@@ -1,0 +1,20 @@
+{
+    "email": {
+       "email": "user@gmail.com",
+       "password": "secret",
+       "smptp_server": "smtp.cloud.com",
+       "smtp_port": "25",
+       "from_email": "user@pyjstack.com",
+       "to_email": [
+          "user1@gmail.com",
+          "user2@gmail.com"
+       ],
+       "subject": "Email Notification",
+       "attachment": "/tmp/pyjstack/attachment.tar.gz"
+    },
+    "jstack": {
+       "pid": "10023",
+       "count": "10",
+       "delay": "2"
+    }
+ }

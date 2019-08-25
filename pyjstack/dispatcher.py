@@ -37,3 +37,7 @@ def send(server, from_email, to_email, subject, content, attachment):
 def send(smtp_server, smtp_port, from_email, password, to_email, subject, content, attachment):
     server = connect(smtp_server, smtp_port, from_email, password)
     send(server, from_email, to_email, subject, content, attachment)
+
+def send(smtp_server, smtp_port, from_email, to_email, subject, content, attachment):
+    server = connect(smtp_server, smtp_port)
+    send(server, from_email, to_email, subject, content, attachment)

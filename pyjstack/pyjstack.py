@@ -8,6 +8,7 @@ import argparse
 import sys
 import time
 import subprocess
+import tarfile
 
 from time import sleep
 from configurer import configure_logging_console
@@ -71,6 +72,30 @@ def get_options(args):
     parser.add_argument(
         '--delay', required=False, default=1, type=int,
         help='Delay in between collecting thread dumps, (in seconds)')
+    parser.add_argument(
+        '--smtp-server', required=False,
+        help='SMTP server for email dispatch')
+    parser.add_argument(
+        '--smtp-port', required=False,
+        help='SMTP server port for email dispatch')
+    parser.add_argument(
+        '--from-email', required=False,
+        help='Email From Address')
+    parser.add_argument(
+        '--password', required=False,
+        help='Email password for loggining in')
+    parser.add_argument(
+        '--to-email', required=False,
+        help='Email To Address')
+    parser.add_argument(
+        '--subject', required=False,
+        help='Email subject line')
+    parser.add_argument(
+        '--message', required=False,
+        help='Email message body or content')
+    parser.add_argument(
+        '--attachment', required=False,
+        help='Email attachment if any')
     options = parser.parse_args(args)
     return options
 
@@ -80,6 +105,10 @@ def jstack(pid):
     status = os.system(command)
     logger.debug('status: %s', status)
 
+def make_tarfile(output_filename, source_dir):
+    with tarfile.open(output_filename, "w:gz") as tar:
+        tar.add(source_dir, arcname=os.path.basename(source_dir))
+
 def execute(options):
     count = options.count
     while count > 0:
@@ -87,6 +116,7 @@ def execute(options):
         jstack(options.pid)
         time.sleep(options.delay)
         count -= 1
+    logger.debug('Done, count: %s', count)
 
 def main():
     start_time = time.time()  # assumes that task takes at least a tenth of second to run.

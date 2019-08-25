@@ -71,7 +71,7 @@ def read_json_conf(filename):
         return json.load(json_conf_file)
     return None
 
-def read_json_conf(filename, conf):
+def write_json_conf(filename, conf):
     """
     Write configuration options into a JSON file format. The file should be 
     written to the local filesystem. The user who runs this process should 

@@ -1,2 +1,72 @@
-# pyjstack
-pyjstack 
+pyjstack
+========
+|docs| |travis| |pypi| |coverage|
+
+.. |docs| image:: http://img.shields.io/badge/Docs-latest-green.svg
+.. |travis| image:: https://travis-ci.org/sarathkumarsivan/pyjstack.svg?branch=master
+.. |pypi| image:: https://img.shields.io/pypi/v/pyjstack.svg
+.. |coverage| image:: https://img.shields.io/badge/coverage-100%25-brightgreen
+
+
+The pyjstack command-line tool lets you to collect the Java thread dump currently running on your system., A thread dump is a snapshot of the state of all threads that are part of the process. The state of each thread is presented with a so called stack trace, which shows the contents of a thread’s stack. Some of the threads belong to the Java application you are running, while others are JVM internal threads.
+
+A thread dump reveals information about an application’s thread activity that can help you diagnose problems and better optimize application and JVM performance; for example, thread dumps automatically show the occurrence of a deadlock. Deadlocks bring some or all of an application to a complete halt. The pyjstack uses the jstack utility to prints Java stack traces.
+
+Installation
+------------
+
+The pyjstack can be installed via pip, the Python package manager. If pip isn’t already available on your system of Python, run the following commands to install it:
+::
+
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python get-pip.py --user
+
+Then install pyjstack
+::
+
+    sudo pip install pyjstack
+
+Install from GitHub via pip:
+::
+
+    pip install git+https://github.com/sarathkumarsivan/pyjstack.git
+
+You can also install the latest version directly from a cloned Git repository:
+::
+
+    git clone https://github.com/sarathkumarsivan/pyjstack.git
+    cd pyjstack
+    python setup.py install
+
+Upgrade
+-------
+You can upgrade pyjstack via pip; issue the below command to perform the upgrade:
+::
+
+    sudo pip install pyjstack --upgrade
+
+Usage
+-----
+You can use pyjstack by issuing the pyjstack command.
+::
+
+    pyjstack \
+	   --pid 12397 \
+   	   --count 12 \
+   	   --delay 1 
+
+Options
+#######
+
+**--pid:**
+  The PID of your Java process.
+
+**--verbose:**
+  Enable debug level logging. You can enable verbose logging which exactly similar to the DEBUG level. If you see any unexpected behavior while issuing pyjstack, enablling this option would be a good choice to identify the problem and trace the root cause. 
+
+**--quiet:**
+  Make little or no noise during the file transfer. During the normal execution of pyjstack command, INFO level logs would be printed on the console; but if you provide --quiet option, the command would be executed silently.
+
+Supports
+--------
+Tested on Python 2.7, 3.2, 3.4, 3.6

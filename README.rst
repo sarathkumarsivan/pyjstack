@@ -47,19 +47,22 @@ You can upgrade pyjstack via pip; issue the below command to perform the upgrade
 
 Usage
 -----
-You can use pyjstack by issuing the pyjstack command.
+To obtain a thread dump using pyjstack, run the following command:
 ::
 
-    pyjstack \
-	   --pid 12397 \
-   	   --count 12 \
-   	   --delay 1 
+    pyjstack --pid 12397 --count 12 --delay 1 
 
 Options
 #######
 
 **--pid:**
   The PID of your Java process.
+
+**--count:**
+  The count indicates how many thread dumps to take.
+
+**--delay:**
+  The delay indicates the time delay in seconds between each dump.
 
 **--verbose:**
   Enable debug level logging. You can enable verbose logging which exactly similar to the DEBUG level. If you see any unexpected behavior while issuing pyjstack, enablling this option would be a good choice to identify the problem and trace the root cause. 

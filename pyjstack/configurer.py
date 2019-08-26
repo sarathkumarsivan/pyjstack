@@ -127,7 +127,7 @@ def read_ini_conf(filename):
     Read configuration file from local filesystem. The configuration file should be
     in valid INI format.
 
-    :param filename: The YAML file which has the configuration options.
+    :param filename: The INI file which has the configuration options.
     :returns: Configuration loaded from YAML configuration file.
     :raises: None
     """

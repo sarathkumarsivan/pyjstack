@@ -87,8 +87,8 @@ def write_json_conf(filename, conf):
     :returns: None
     :raises: None
     """
-    with open(filename, 'w') as json_conf_file:
-        json.dump(conf, json_conf_file)
+    with open(filename, 'w') as conf_file:
+        json.dump(conf, conf_file)
 
 
 def read_yaml_conf(filename):
@@ -100,8 +100,8 @@ def read_yaml_conf(filename):
     :returns: Configuration loaded from YAML configuration file.
     :raises: None
     """
-    with open(filename, 'r') as yaml_conf_file:
-        return yaml.load(yaml_conf_file)
+    with open(filename, 'r') as conf_file:
+        return yaml.load(conf_file)
     return None
 
 

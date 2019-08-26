@@ -23,6 +23,8 @@
 import logging
 import sys
 import json
+import yaml
+
 
 def configure_logging_console(logger, format):
     """
@@ -41,6 +43,7 @@ def configure_logging_console(logger, format):
     logger.addHandler(handler)
     return logger
 
+
 def configure_logging_file(logger, format, file):
     """
     Configure and enable file logging with the given format. The logging
@@ -58,6 +61,7 @@ def configure_logging_file(logger, format, file):
     logger.addHandler(handler)
     return logger
 
+
 def read_json_conf(filename):
     """
     Read configuration file from local filesystem. The configuration file should be
@@ -67,9 +71,10 @@ def read_json_conf(filename):
     :returns: Configuration loaded from JSON configuration file.
     :raises: None
     """
-    with open(filename) as json_conf_file:
+    with open(filename, 'r') as json_conf_file:
         return json.load(json_conf_file)
     return None
+
 
 def write_json_conf(filename, conf):
     """
@@ -84,3 +89,17 @@ def write_json_conf(filename, conf):
     """
     with open(filename, 'w') as json_conf_file:
         json.dump(conf, json_conf_file)
+
+
+def read_json_conf(filename):
+    """
+    Read configuration file from local filesystem. The configuration file should be
+    in valid YAML format.
+
+    :param filename: The YAML file which has the configuration options.
+    :returns: Configuration loaded from YAML configuration file.
+    :raises: None
+    """
+    with open(filename, 'r') as yaml_conf_file:
+        return yaml.load(yaml_conf_file)
+    return None

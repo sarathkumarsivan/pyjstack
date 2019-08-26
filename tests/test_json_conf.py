@@ -2,7 +2,7 @@ import unittest
 from pyjstack.configurer import read_json_conf
 
 
-class TestConfMethods(unittest.TestCase):
+class TestJSONConfMethods(unittest.TestCase):
 
     def test_read_json_conf(self):
         conf = read_json_conf("conf/pyjstack.json")

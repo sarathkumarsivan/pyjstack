@@ -24,6 +24,8 @@ import logging
 import sys
 import json
 import yaml
+import ConfigParser
+import io
 
 
 def configure_logging_console(logger, format):
@@ -71,8 +73,8 @@ def read_json_conf(filename):
     :returns: Configuration loaded from JSON configuration file.
     :raises: None
     """
-    with open(filename, 'r') as json_conf_file:
-        return json.load(json_conf_file)
+    with open(filename, 'r') as conf_file:
+        return json.load(conf_file)
     return None
 
 
@@ -118,3 +120,18 @@ def write_yaml_conf(filename, conf):
     """
     with open(filename, 'w') as conf_file:
         yaml.dump(conf, conf_file)
+
+
+def read_ini_conf(filename):
+    """
+    Read configuration file from local filesystem. The configuration file should be
+    in valid INI format.
+
+    :param filename: The YAML file which has the configuration options.
+    :returns: Configuration loaded from YAML configuration file.
+    :raises: None
+    """
+    with open(filename, 'r') as conf_file:
+        content = conf_file.read()
+    conf = ConfigParser.RawConfigParser(allow_no_value=True)
+    return conf.readfp(io.BytesIO(content))

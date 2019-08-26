@@ -91,7 +91,7 @@ def write_json_conf(filename, conf):
         json.dump(conf, json_conf_file)
 
 
-def read_json_conf(filename):
+def read_yaml_conf(filename):
     """
     Read configuration file from local filesystem. The configuration file should be
     in valid YAML format.
@@ -103,3 +103,18 @@ def read_json_conf(filename):
     with open(filename, 'r') as yaml_conf_file:
         return yaml.load(yaml_conf_file)
     return None
+
+
+def write_yaml_conf(filename, conf):
+    """
+    Write configuration options into a YAML file format. The file should be 
+    written to the local filesystem. The user who runs this process should 
+    have write permission on the given filesystem.
+
+    :param filename: The YAML file which has the configuration options.
+    :param conf: The configuration options to be written to the YAML file.
+    :returns: None
+    :raises: None
+    """
+    with open(filename, 'w') as conf_file:
+        yaml.dump(conf, conf_file)

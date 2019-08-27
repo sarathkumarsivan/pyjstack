@@ -38,6 +38,14 @@ def connect(smtp_server, smtp_port=25):
 
 
 def attach(path):
+    """
+    Attach the given file to the email payload. The file size of the given 
+    attachment should be less than or equal to the mazimum allowed size.
+
+    :param path: File path of the attachment.
+    :returns: None
+    :raises: None
+    """
     filename = os.path.basename(path)
     attachment = open(path, "rb")
     part = MIMEBase('application', 'octet-stream')

@@ -24,6 +24,14 @@ def connect(smtp_server, smtp_port, email, password):
 
 
 def connect(smtp_server, smtp_port=25):
+    """
+    Connect to the SMTP server to send emails.
+
+    :param smtp_server: Hostname or IP Address of the SMTP server
+    :param smtp_port: Port number of the SMTP server, default is 25.
+    :returns: server instance without logging in.
+    :raises: None
+    """
     server = smtplib.SMTP(smtp_server, smtp_port)
     server.starttls()
     return server

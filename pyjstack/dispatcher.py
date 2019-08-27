@@ -84,6 +84,7 @@ def send(smtp_server, smtp_port, from_email, password, to_email, subject, conten
     :param smtp_server: Hostname or IP Adrress of the SMTP server.
     :param smtp_port: SMTP port number to send email message.
     :param from_email: From email address for sending email message.
+    :param password: Password for SMTP authentication.
     :param to_email: To email addresses for sending email message.
     :param subject: Subject line of the email message.
     :param content: Message body of the email message.
@@ -96,5 +97,18 @@ def send(smtp_server, smtp_port, from_email, password, to_email, subject, conten
 
 
 def send(smtp_server, smtp_port, from_email, to_email, subject, content, attachment):
+    """
+    Send the email with the provided options.
+
+    :param smtp_server: Hostname or IP Adrress of the SMTP server.
+    :param smtp_port: SMTP port number to send email message.
+    :param from_email: From email address for sending email message.
+    :param to_email: To email addresses for sending email message.
+    :param subject: Subject line of the email message.
+    :param content: Message body of the email message.
+    :param attachment: Attachment to be attached with the email message.
+    :returns: None
+    :raises: None
+    """
     server = connect(smtp_server, smtp_port)
     send(server, from_email, to_email, subject, content, attachment)

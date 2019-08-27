@@ -55,6 +55,18 @@ def attach(path):
 
 
 def send(server, from_email, to_email, subject, content, attachment):
+    """
+    Connect to the SMTP server to send emails.
+
+    :param server: SMTP server instance with starttls enabled.
+    :param from_email: From email address for sending email message.
+    :param to_email: To email addresses for sending email message.
+    :param subject: Subject line of the email message.
+    :param content: Message body of the email message.
+    :param attachment: Attachment to be attached with the email message.
+    :returns: None
+    :raises: None
+    """
     message = MIMEMultipart()
     message['From'] = from_email
     message['To'] = to_email

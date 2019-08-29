@@ -51,6 +51,7 @@ setup(name='pyjstack',
       packages=['pyjstack'],
       install_requires=[
           'pytest',
+          'pyyaml'
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],

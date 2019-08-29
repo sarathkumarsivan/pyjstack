@@ -140,6 +140,7 @@ def execute(options):
         jstack(options.pid)
         time.sleep(options.delay)
         count -= 1
+    make_tarfile('thread-dump.tar.gz', '{workspace}')
     logger.debug('Done, count: %s', count)
 
 def main():

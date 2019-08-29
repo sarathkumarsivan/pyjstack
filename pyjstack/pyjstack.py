@@ -124,6 +124,14 @@ def get_options(args):
     return options
 
 def jstack(pid):
+    """
+    Get the Java stack traces of Java threads for a given Java process or 
+    core file or a remote debug server. 
+
+    :param: pid: process id for which the stack trace is to be printed.
+    :returns: Java stack traces of Java threads for a given Java process.
+    :raises: None
+    """
     path = '{workspace}/jstack.$pid.$(date +%\s.%N)'.format(workspace=workspace)
     command = 'jstack -F -m -l {pid} > {path}'.format(pid=pid, path=path)
     status = os.system(command)

@@ -32,3 +32,9 @@ class Error(Exception):
     """
     pass
 
+
+class Warning(Warning):
+    """
+    Base class for other exceptions
+    """
+    pass

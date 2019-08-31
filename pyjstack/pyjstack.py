@@ -56,6 +56,14 @@ def cleanup():
 
 
 def makedirs(path):
+    """
+    Create a leaf directory and all intermediate ones. Ignores the error
+    if the give path (absolute path) exists on the local file system.
+
+    :param (str) path: None
+    :returns: None
+    :raises: None
+    """
     try:
         os.makedirs(path)
     except OSError as err:

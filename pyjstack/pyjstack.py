@@ -162,6 +162,14 @@ def jstack(pid):
     logger.debug('status: %s', status)
 
 def make_tarfile(output_filename, source_dir):
+    """
+    Make the tar file for packaging all the collected Java thread dumps.
+
+    :param: output_filename: The output filename of the target thread dump.
+    :param: source_dir: The directory to which the file has to be created.
+    :returns: None
+    :raises: None
+    """
     with tarfile.open(output_filename, "w:gz") as tar:
         tar.add(source_dir, arcname=os.path.basename(source_dir))
 

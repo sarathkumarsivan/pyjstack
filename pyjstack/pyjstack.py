@@ -174,6 +174,13 @@ def make_tarfile(output_filename, source_dir):
         tar.add(source_dir, arcname=os.path.basename(source_dir))
 
 def execute(options):
+    """
+    Execute the jstack command to collect the Java thread dumps.
+
+    :param: options: The options or parameters supplied from command-line.
+    :returns: None
+    :raises: None
+    """
     count = options.count
     while count > 0:
         logger.debug('Runing instance: %s', count)

@@ -213,6 +213,13 @@ def execute(options):
     logger.debug('Done, count: %s', count)
 
 def main():
+    """
+    Main entry point to start the execution of thread dump collection.
+
+    :param: None
+    :returns: None
+    :raises: None
+    """
     start_time = time.time()  # assumes that task takes at least a tenth of second to run.
     options = get_options(sys.argv[1:])
     logger.setLevel(level=options.logging_level)

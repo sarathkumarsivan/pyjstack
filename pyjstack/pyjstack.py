@@ -51,6 +51,13 @@ def setup():
 
 
 def cleanup():
+    """
+    Cleanup all the resources, directories and filesystem at the end of execution.
+
+    :param: None
+    :returns: None
+    :raises: None
+    """
     logger.debug('Cleaning up temporary workspace: %s', workspace)
     shutil.rmtree(workspace)
 

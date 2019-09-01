@@ -136,4 +136,5 @@ def read_ini_conf(filename):
     with open(filename, 'r') as conf_file:
         content = conf_file.read()
     conf = ConfigParser.RawConfigParser(allow_no_value=True)
+    print conf
     return conf.readfp(io.BytesIO(content))

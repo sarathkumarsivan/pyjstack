@@ -24,6 +24,7 @@ THE SOFTWARE.
 
 import unittest
 import os
+import configparser
 from pyjstack.configurer import read_ini_conf
 
 
@@ -34,7 +35,7 @@ class TestINIConfMethods(unittest.TestCase):
 
     def test_read_ini_conf(self):
         conf = read_ini_conf('conf/pyjstack.ini')
-        print conf
+        print conf.sections()
         print conf['email']['email']
         self.assertEqual(conf.get('email', 'email'), 'user@gmail.com')
         self.assertEqual(conf.get('email', 'from_email'), 'user@pyjstack.com')

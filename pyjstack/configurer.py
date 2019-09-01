@@ -26,9 +26,8 @@ import logging
 import sys
 import json
 import yaml
-import ConfigParser
 import io
-from ConfigParser import SafeConfigParser
+import configparser
 
 
 def configure_logging_console(logger, format):
@@ -134,5 +133,6 @@ def read_ini_conf(filename):
     :returns: Configuration loaded from YAML configuration file.
     :raises: None
     """
-    parser = SafeConfigParser()
-    return parser.read(filename)
+    conf = configparser.ConfigParser()
+    conf.read(filename)
+    return conf

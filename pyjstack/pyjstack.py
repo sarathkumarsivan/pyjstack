@@ -46,6 +46,13 @@ workspace = '{tempdir}/pyjstack-{uuid}'.format(tempdir = tempdir, uuid = uuid.uu
 
 
 def setup():
+    """
+    Setup all the resources, directories and filesystem at the start of execution.
+
+    :param: None
+    :returns: None
+    :raises: None
+    """
     logger.debug('Setting up temporary workspace: %s', workspace)
     makedirs(workspace)
 

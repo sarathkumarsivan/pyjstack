@@ -30,7 +30,7 @@ CONF_PATH = 'conf/pyjstack.json'
 class TestJSONConfMethods(unittest.TestCase):
 
     def test_read_json_conf(self):
-        conf = read_json_conf("conf/pyjstack.json")
+        conf = read_json_conf(CONF_PATH)
         email = conf['email']
         self.assertEqual(email['from_email'], 'user@pyjstack.com')
         self.assertEqual(email['smptp_server'], 'smtp.cloud.com')

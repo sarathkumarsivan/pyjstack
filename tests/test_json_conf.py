@@ -25,6 +25,7 @@ THE SOFTWARE.
 import unittest
 from pyjstack.configurer import read_json_conf
 
+CONF_PATH = 'conf/pyjstack.ini'
 
 class TestJSONConfMethods(unittest.TestCase):
 

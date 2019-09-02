@@ -27,6 +27,7 @@ import os
 import configparser
 from pyjstack.configurer import read_ini_conf
 
+CONF_PATH = 'conf/pyjstack.ini'
 
 class TestINIConfMethods(unittest.TestCase):
 

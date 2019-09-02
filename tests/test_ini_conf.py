@@ -35,7 +35,7 @@ class TestINIConfMethods(unittest.TestCase):
         self.assertEquals(os.path.exists(CONF_PATH), True)
 
     def test_read_ini_conf(self):
-        conf = read_ini_conf('conf/pyjstack.ini')
+        conf = read_ini_conf(CONF_PATH)
         print conf.sections()
         print conf['email']['email']
         self.assertEqual(conf.get('email', 'email'), 'user@gmail.com')

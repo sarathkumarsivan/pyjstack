@@ -32,7 +32,7 @@ CONF_PATH = 'conf/pyjstack.ini'
 class TestINIConfMethods(unittest.TestCase):
 
     def test_init_conf_exists(self):
-        self.assertEquals(os.path.exists('conf/pyjstack.ini'), True)
+        self.assertEquals(os.path.exists(CONF_PATH), True)
 
     def test_read_ini_conf(self):
         conf = read_ini_conf('conf/pyjstack.ini')

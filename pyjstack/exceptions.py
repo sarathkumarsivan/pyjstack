@@ -38,3 +38,9 @@ class Warning(Warning):
     Base class for other exceptions
     """
     pass
+
+class JStackException(Error):
+    """
+    JStack Exception while collecting thread dump
+    """
+    pass

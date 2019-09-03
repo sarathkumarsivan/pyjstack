@@ -28,6 +28,7 @@ import json
 import yaml
 import io
 import configparser
+from BeautifulSoup import BeautifulSoup
 
 
 def configure_logging_console(logger, format):

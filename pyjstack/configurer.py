@@ -68,8 +68,8 @@ def configure_logging_file(logger, format, file):
 
 def read_json_conf(filename):
     """
-    Read configuration file from local filesystem. The configuration file should be
-    in valid JSON format.
+    Read configuration file from local filesystem. The configuration file should 
+    be in valid JSON format.
 
     :param filename: The JSON file which has the configuration options.
     :returns: Configuration loaded from JSON configuration file.

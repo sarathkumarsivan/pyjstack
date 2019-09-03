@@ -148,6 +148,8 @@ def read_xml_conf(filename):
     :returns: Configuration loaded from XML configuration file.
     :raises: None
     """
-    conf = configparser.ConfigParser()
-    conf.read(filename)
+    with open(filename) as f:
+        content = f.read()
+    conf = BeautifulSoup(content)
     return conf
+    

@@ -72,4 +72,4 @@ Options
 
 Supports
 --------
-Tested on Python 2.7, 3.2, 3.4, 3.6
+Tested on Python 2.7, 3.2, 3.4, 3.6, 3.7

@@ -137,3 +137,17 @@ def read_ini_conf(filename):
     conf = configparser.ConfigParser()
     conf.read(filename)
     return conf
+
+
+def read_xml_conf(filename):
+    """
+    Read configuration file from local filesystem. The configuration file should be
+    in valid XML format.
+
+    :param filename: The XML file which has the configuration options.
+    :returns: Configuration loaded from XML configuration file.
+    :raises: None
+    """
+    conf = configparser.ConfigParser()
+    conf.read(filename)
+    return conf

@@ -9,6 +9,7 @@
       <to_email>
          <li>user1@gmail.com</li>
          <li>user2@gmail.com</li>
+         <li>user3@gmail.com</li>
       </to_email>
       <subject>Email Notification</subject>
       <attachment>/tmp/pyjstack/attachment.tar.gz</attachment>

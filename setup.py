@@ -52,7 +52,8 @@ setup(name='pyjstack',
       install_requires=[
           'pytest',
           'pyyaml',
-          'beautifulsoup4'
+          'beautifulsoup4',
+          'six'
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],

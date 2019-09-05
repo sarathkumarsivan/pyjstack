@@ -27,7 +27,11 @@ import sys
 import json
 import yaml
 import io
-import configparser
+import six
+if six.PY2:
+    import ConfigParser as configparser
+else:
+    import configparser
 from bs4 import BeautifulSoup
 
 

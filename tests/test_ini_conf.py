@@ -38,7 +38,6 @@ class TestINIConfMethods(unittest.TestCase):
     def test_read_ini_conf(self):
         conf = read_ini_conf(CONF_PATH)
         print conf.sections()
-        print conf['email']['email']
         self.assertEqual(conf.get('email', 'email'), 'user@gmail.com')
         self.assertEqual(conf.get('email', 'from_email'), 'user@pyjstack.com')
         self.assertEqual(conf.get('email', 'smptp_server'), 'smtp.cloud.com')

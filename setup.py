@@ -53,7 +53,8 @@ setup(name='pyjstack',
           'pytest',
           'pyyaml',
           'beautifulsoup4',
-          'six'
+          'six',
+          'configparser'
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],

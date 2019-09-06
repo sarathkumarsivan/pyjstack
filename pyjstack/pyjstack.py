@@ -169,6 +169,9 @@ def get_options(args):
     parser.add_argument(
         '--sftp-host', required=False,
         help='SFTP Hostname for shipping thread dump')
+    parser.add_argument(
+        '--sftp-port', required=False, default=22, type=int,
+        help='SFTP Hostname for shipping thread dump')
     options = parser.parse_args(args)
     return options
 

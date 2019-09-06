@@ -175,6 +175,9 @@ def get_options(args):
     parser.add_argument(
         '--sftp-user', required=False,
         help='SFTP username for authentication')
+    parser.add_argument(
+        '--sftp-password', required=False,
+        help='SFTP password for authentication')
     options = parser.parse_args(args)
     return options
 

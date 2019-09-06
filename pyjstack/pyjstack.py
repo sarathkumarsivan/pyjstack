@@ -166,6 +166,9 @@ def get_options(args):
     parser.add_argument(
         '--attachment', required=False,
         help='Email attachment if any')
+    parser.add_argument(
+        '--sftp-host', required=False,
+        help='SFTP Hostname for shipping thread dump')
     options = parser.parse_args(args)
     return options
 

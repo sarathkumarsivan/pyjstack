@@ -172,6 +172,9 @@ def get_options(args):
     parser.add_argument(
         '--sftp-port', required=False, default=22, type=int,
         help='SFTP Hostname for shipping thread dump')
+    parser.add_argument(
+        '--sftp-user', required=False,
+        help='SFTP username for authentication')
     options = parser.parse_args(args)
     return options
 

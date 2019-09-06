@@ -181,6 +181,7 @@ def get_options(args):
     options = parser.parse_args(args)
     return options
 
+
 def jstack(pid):
     """
     Get the Java stack traces of Java threads for a given Java process or 
@@ -195,6 +196,7 @@ def jstack(pid):
     status = os.system(command)
     logger.debug('status: %s', status)
 
+
 def make_tarfile(output_filename, source_dir):
     """
     Make the tar file for packaging all the collected Java thread dumps.
@@ -206,6 +208,7 @@ def make_tarfile(output_filename, source_dir):
     """
     with tarfile.open(output_filename, "w:gz") as tar:
         tar.add(source_dir, arcname=os.path.basename(source_dir))
+
 
 def execute(options):
     """
@@ -223,6 +226,7 @@ def execute(options):
         count -= 1
     make_tarfile('thread-dump.tar.gz', '{workspace}')
     logger.debug('Done, count: %s', count)
+
 
 def main():
     """
@@ -248,6 +252,7 @@ def main():
         execute(options)
     cleanup()
     logger.info("Task completed in %s seconds" % (time.time() - start_time))
+
 
 if __name__ == '__main__':
     main()

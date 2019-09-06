@@ -39,8 +39,16 @@ class Warning(Warning):
     """
     pass
 
+
 class JStackException(Error):
     """
     JStack Exception while collecting thread dump
+    """
+    pass
+
+
+class SFTPException(Error):
+    """
+    SFTP Exception while transferring the thread dump
     """
     pass

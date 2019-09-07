@@ -242,6 +242,7 @@ def scp(host, port, user, password, source, target):
     ssh = create_ssh_client(host, port, user, password)
     scp = SCPClient(ssh.get_transport())
     scp.put(source, target)
+    scp.close()
 
 
 def main():

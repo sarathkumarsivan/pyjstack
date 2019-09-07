@@ -54,7 +54,9 @@ setup(name='pyjstack',
           'pyyaml',
           'beautifulsoup4',
           'six',
-          'configparser'
+          'configparser',
+          'paramiko',
+          'scp'
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],

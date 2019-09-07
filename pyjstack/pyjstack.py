@@ -33,9 +33,8 @@ import sys
 import time
 import subprocess
 import tarfile
+import paramiko
 
-
-from time import sleep
 from configurer import configure_logging_console
 from paramiko import SSHClient
 from scp import SCPClient
@@ -92,13 +91,13 @@ def makedirs(path):
 
 def find_processes(name):
     """
-    Find the list of processes running on the current node by process name. It uses 
-    the ps Unix command to access information about processes running on your system. 
-    Using the -f option for ps you can gain additional useful information on each 
-    process in the listing: usernames (UID), process ID (PID), parent process ID (PPID) 
+    Find the list of processes running on the current node by process name. It uses
+    the ps Unix command to access information about processes running on your system.
+    Using the -f option for ps you can gain additional useful information on each
+    process in the listing: usernames (UID), process ID (PID), parent process ID (PPID)
     and full command lines (not just the process name).
 
-    :param: name: Process name to be searched on your system to list the processes 
+    :param: name: Process name to be searched on your system to list the processes
     :returns: output: The console output contains the process details.
     :raises: None
     """
@@ -187,8 +186,8 @@ def get_options(args):
 
 def jstack(pid):
     """
-    Get the Java stack traces of Java threads for a given Java process or 
-    core file or a remote debug server. 
+    Get the Java stack traces of Java threads for a given Java process or
+    core file or a remote debug server.
 
     :param: pid: process id for which the stack trace is to be printed.
     :returns: Java stack traces of Java threads for a given Java process.
@@ -231,10 +230,18 @@ def execute(options):
     logger.debug('Done, count: %s', count)
 
 
-def scp(host):
-    ssh = SSHClient()
-    ssh.load_system_host_keys()
-    ssh.connect(host)
+def create_ssh_client(host, port, user, password):
+    client = paramiko.SSHClient()
+    client.load_system_host_keys()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(host, port, user, password)
+    return client
+
+
+def scp(host, port, user, password, source, target):
+    ssh = create_ssh_client(host, port, user, password)
+    scp = SCPClient(ssh.get_transport())
+    scp.put(source, target)
 
 
 def main():

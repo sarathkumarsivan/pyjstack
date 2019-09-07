@@ -34,8 +34,11 @@ import time
 import subprocess
 import tarfile
 
+
 from time import sleep
 from configurer import configure_logging_console
+from paramiko import SSHClient
+from scp import SCPClient
 
 # Logger instance for pyjstack.
 format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -226,6 +229,12 @@ def execute(options):
         count -= 1
     make_tarfile('thread-dump.tar.gz', '{workspace}')
     logger.debug('Done, count: %s', count)
+
+
+def scp(host):
+    ssh = SSHClient()
+    ssh.load_system_host_keys()
+    ssh.connect(host)
 
 
 def main():

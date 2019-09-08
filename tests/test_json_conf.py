@@ -23,7 +23,7 @@ THE SOFTWARE.
 """
 
 import unittest
-from pyjstack.configurer import read_json_conf
+from pyjstack.sysconfig import read_json_conf
 
 CONF_PATH = 'conf/pyjstack-conf.json'
 

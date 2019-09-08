@@ -155,7 +155,7 @@ def get_options(args):
         help='Email From Address')
     parser.add_argument(
         '--password', required=False,
-        help='Email password for loggining in')
+        help='Email password for logging in')
     parser.add_argument(
         '--to-email', required=False,
         help='Email To Address')

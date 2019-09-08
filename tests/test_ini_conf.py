@@ -25,7 +25,7 @@ THE SOFTWARE.
 import unittest
 import os
 import configparser
-from pyjstack.configurer import read_ini_conf
+from pyjstack.sysconfig import read_ini_conf
 
 CONF_PATH = 'conf/pyjstack-conf.ini'
 

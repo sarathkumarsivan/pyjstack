@@ -35,7 +35,7 @@ import subprocess
 import tarfile
 import paramiko
 
-from configurer import configure_logging_console
+from sysconfig import configure_logging_console
 from paramiko import SSHClient
 from scp import SCPClient
 

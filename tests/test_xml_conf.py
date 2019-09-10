@@ -2,6 +2,8 @@ import unittest
 
 from pyjstack.sysconfig import read_xml_conf
 
+CONF_PATH = 'conf/pyjstack-conf.xml'
+
 
 class TestXMLConfMethods(unittest.TestCase):
 

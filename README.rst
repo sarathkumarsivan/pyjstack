@@ -40,7 +40,8 @@ You can also install the latest version directly from a cloned Git repository:
 
 If you face any issue while installation related to six package, you can ignore it like this:
 ::
-pip install pyjstack --ignore-installed six
+
+    pip install pyjstack --ignore-installed six
 
 Upgrade
 -------

@@ -41,8 +41,8 @@ from datetime import datetime
 from ._version import __version__
 
 # Logger instance for pyjstack.
-format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-logger = set_logging_console(logging.getLogger('pyjstack'), format)
+logging_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+logger = set_logging_console(logging.getLogger('pyjstack'), logging_format)
 
 tempdir = tempfile.gettempdir()
 workspace = '{tempdir}/pyjstack-{uuid}'.format(tempdir = tempdir, uuid = uuid.uuid4())

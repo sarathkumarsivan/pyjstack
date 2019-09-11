@@ -3,6 +3,7 @@ from pyjstack.sysconfig import read_json_conf
 
 CONF_PATH = 'conf/pyjstack-conf.json'
 
+
 class TestJSONConfMethods(unittest.TestCase):
 
     def test_read_json_conf(self):

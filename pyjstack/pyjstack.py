@@ -21,7 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
-
 import os
 import errno
 import uuid
@@ -39,6 +38,7 @@ from sysconfig import set_logging_console
 from paramiko import SSHClient
 from scp import SCPClient
 from datetime import datetime
+from ._version import __version__
 
 # Logger instance for pyjstack.
 format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -121,13 +121,6 @@ def find_java_processes():
     return find_processes('java')
 
 
-# Version info -- read without importing
-_locals = {}
-with open("pyjstack/_version.py") as fp:
-    exec(fp.read(), None, _locals)
-version = _locals["__version__"]
-
-
 def get_options(args):
     """
     Get the command-line options for executing pyjstack commands.
@@ -136,8 +129,7 @@ def get_options(args):
     :returns: map options: Options supplied from command-line
     :raises: None
     """
-    parser = argparse.ArgumentParser(prog='pyjstack')
-    parser.add_argument('--version', action='version', version='%(prog)s %(version)s')
+    parser = argparse.ArgumentParser()
     parser.add_argument(
         '--verbose', help="Enable debug level logging", action="store_const",
         dest="logging_level", const=logging.DEBUG, default=logging.INFO)
@@ -189,6 +181,8 @@ def get_options(args):
     parser.add_argument(
         '--sftp-password', required=False,
         help='SFTP password for authentication')
+    version = '{version}'.format(version=__version__)
+    parser.add_argument('--version', action='version', version=version)
     options = parser.parse_args(args)
     return options
 

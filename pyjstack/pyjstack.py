@@ -194,7 +194,7 @@ def jstack(pid):
     :raises: None
     """
     path = '{workspace}/jstack.$pid.$(date +%\s.%N)'.format(workspace=workspace)
-    command = 'jstack -F -m -l {pid} > {path}'.format(pid=pid, path=path)
+    command = 'jstack -l {pid} > {path}'.format(pid=pid, path=path)
     status = os.system(command)
     logger.debug('status: %s', status)
 

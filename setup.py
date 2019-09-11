@@ -28,8 +28,14 @@ def readme():
         return f.read()
 
 
+# Version info -- read without importing
+_locals = {}
+with open("pyjstack/_version.py") as fp:
+    exec(fp.read(), None, _locals)
+version = _locals["__version__"]
+
 setup(name='pyjstack',
-      version='0.0.3',
+      version=version,
       description='The pyjstack command-line tool for taking the thread dump',
       long_description=readme(),
       classifiers=[

@@ -181,7 +181,7 @@ def get_options(args):
     parser.add_argument(
         '--sftp-password', required=False,
         help='SFTP password for authentication')
-    version = '{version}'.format(version=__version__)
+    version = 'pyjstack {version}'.format(version=__version__)
     parser.add_argument('--version', action='version', version=version)
     options = parser.parse_args(args)
     return options

@@ -193,7 +193,7 @@ def jstack(pid):
     :returns: Java stack traces of Java threads for a given Java process.
     :raises: None
     """
-    path = '{workspace}/jstack.$pid.$(date +%\s.%N)'.format(workspace=workspace)
+    path = '{workspace}/jstack.{pid}.$(date +%\s.%N)'.format(workspace=workspace, pid=pid)
     logger.debug('path: %s', path)
     command = 'jstack -l {pid} > {path}'.format(pid=pid, path=path)
     status = os.system(command)

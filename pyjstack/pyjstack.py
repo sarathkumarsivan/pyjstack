@@ -38,6 +38,7 @@ import paramiko
 from sysconfig import configure_logging_console
 from paramiko import SSHClient
 from scp import SCPClient
+from datetime import datetime
 
 # Logger instance for pyjstack.
 format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -227,8 +228,25 @@ def execute(options):
         jstack(options.pid)
         time.sleep(options.delay)
         count -= 1
-    make_tarfile('thread-dump.tar.gz', '{workspace}')
-    logger.debug('Done, count: %s', count)
+    timestamp = datetime.utcnow().strftime('%Y%m%d%H%M%S')
+    archive = 'jstack-{pid}-{timestamp}.tar.gz'.format(pid=options.pid, timestamp=timestamp)
+    logger.debug('Creating archive %s from %s', archive, workspace)
+    make_tarfile(archive, workspace)
+    size = sizeof(archive)
+    logger.info('Done, count: %s [Path: %s, Size on Disk: %s]', count, archive, size)
+
+
+def sizeof(filename):
+    if os.path.isfile(filename):
+        file_info = os.stat(filename)
+        return get_bytes(file_info.st_size)
+
+
+def get_bytes(num):
+    for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:
+        if num < 1024.0:
+            return "%3.1f %s" % (num, x)
+        num /= 1024.0
 
 
 def create_ssh_client(host, port, user, password):

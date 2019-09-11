@@ -35,14 +35,14 @@ import subprocess
 import tarfile
 import paramiko
 
-from sysconfig import configure_logging_console
+from sysconfig import set_logging_console
 from paramiko import SSHClient
 from scp import SCPClient
 from datetime import datetime
 
 # Logger instance for pyjstack.
 format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-logger = configure_logging_console(logging.getLogger('pyjstack'), format)
+logger = set_logging_console(logging.getLogger('pyjstack'), format)
 
 tempdir = tempfile.gettempdir()
 workspace = '{tempdir}/pyjstack-{uuid}'.format(tempdir = tempdir, uuid = uuid.uuid4())
@@ -121,6 +121,13 @@ def find_java_processes():
     return find_processes('java')
 
 
+# Version info -- read without importing
+_locals = {}
+with open("pyjstack/_version.py") as fp:
+    exec(fp.read(), None, _locals)
+version = _locals["__version__"]
+
+
 def get_options(args):
     """
     Get the command-line options for executing pyjstack commands.
@@ -129,7 +136,8 @@ def get_options(args):
     :returns: map options: Options supplied from command-line
     :raises: None
     """
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog='pyjstack')
+    parser.add_argument('--version', action='version', version='%(prog)s %(version)s')
     parser.add_argument(
         '--verbose', help="Enable debug level logging", action="store_const",
         dest="logging_level", const=logging.DEBUG, default=logging.INFO)

@@ -29,7 +29,7 @@ def readme():
 
 
 setup(name='pyjstack',
-      version='0.0.1',
+      version='0.0.2',
       description='The pyjstack command-line tool for taking the thread dump',
       long_description=readme(),
       classifiers=[

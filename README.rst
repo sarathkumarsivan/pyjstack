@@ -38,6 +38,10 @@ You can also install the latest version directly from a cloned Git repository:
     cd pyjstack
     python setup.py install
 
+If you face any issue while installation related to six package, you can ignore it like this:
+::
+pip install pyjstack --ignore-installed six
+
 Upgrade
 -------
 You can upgrade pyjstack via pip; issue the below command to perform the upgrade:

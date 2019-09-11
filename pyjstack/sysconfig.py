@@ -35,7 +35,7 @@ else:
 from bs4 import BeautifulSoup
 
 
-def configure_logging_console(logger, format):
+def set_logging_console(logger, format):
     """
     Configure and enable console logging with the given format. The logging
     level must be explicitly set before the configuration or after the
@@ -53,7 +53,7 @@ def configure_logging_console(logger, format):
     return logger
 
 
-def configure_logging_file(logger, format, file):
+def set_logging_file(logger, format, file):
     """
     Configure and enable file logging with the given format. The logging
     level must be explicitly set before the configuration or after the

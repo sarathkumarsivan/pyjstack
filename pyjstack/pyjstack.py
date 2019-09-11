@@ -223,7 +223,7 @@ def execute(options):
     """
     count = options.count
     while count > 0:
-        logger.debug('Runing instance: %s', count)
+        logger.debug('Running instance: %s', count)
         jstack(options.pid)
         time.sleep(options.delay)
         count -= 1

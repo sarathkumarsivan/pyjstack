@@ -245,10 +245,10 @@ def execute(options):
 def sizeof(filename):
     if os.path.isfile(filename):
         file_info = os.stat(filename)
-        return get_bytes(file_info.st_size)
+        return tobytes(file_info.st_size)
 
 
-def get_bytes(num):
+def tobytes(num):
     for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:
         if num < 1024.0:
             return "%3.1f %s" % (num, x)

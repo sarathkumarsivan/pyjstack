@@ -251,6 +251,11 @@ def get_bytes(num):
         num /= 1024.0
 
 
+def check_java_version():
+    version = subprocess.check_output(['java', '-version'], stderr=subprocess.STDOUT)
+    logger.info('%s', version)
+
+
 def create_ssh_client(host, port, user, password):
     client = paramiko.SSHClient()
     client.load_system_host_keys()

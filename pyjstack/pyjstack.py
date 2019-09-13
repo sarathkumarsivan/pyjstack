@@ -224,6 +224,8 @@ def execute(options):
     :returns: None
     :raises: None
     """
+    java_version, javac_version = check_java_version()
+    logger.debug('%s', java_version)
     count = options.count
     while count > 0:
         logger.debug('Running instance: %s', count)
@@ -253,9 +255,7 @@ def get_bytes(num):
 
 def check_java_version():
     java_version = subprocess.check_output(['java', '-version'], stderr=subprocess.STDOUT)
-    logger.debug('%s', java_version)
     javac_version = subprocess.check_output(['javac', '-version'], stderr=subprocess.STDOUT)
-    logger.debug('%s', javac_version)
     return java_version, javac_version
 
 

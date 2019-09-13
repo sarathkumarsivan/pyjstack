@@ -226,6 +226,8 @@ def execute(options):
     """
     java_version, javac_version = check_java_version()
     logger.debug('%s', java_version)
+    logger.debug('%s', javac_version)
+
     count = options.count
     while count > 0:
         logger.debug('Running instance: %s', count)

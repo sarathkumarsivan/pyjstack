@@ -253,9 +253,10 @@ def get_bytes(num):
 
 def check_java_version():
     java_version = subprocess.check_output(['java', '-version'], stderr=subprocess.STDOUT)
-    logger.info('%s', java_version)
+    logger.debug('%s', java_version)
     javac_version = subprocess.check_output(['javac', '-version'], stderr=subprocess.STDOUT)
-    logger.info('%s', javac_version)
+    logger.debug('%s', javac_version)
+    return java_version, javac_version
 
 
 def create_ssh_client(host, port, user, password):

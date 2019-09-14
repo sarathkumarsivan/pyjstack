@@ -249,10 +249,11 @@ def sizeof(filename):
 
 
 def tobytes(num):
+    kb = 1024.0
     for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:
-        if num < 1024.0:
+        if num < kb:
             return "%3.1f %s" % (num, x)
-        num /= 1024.0
+        num /= kb
 
 
 def check_java_version():

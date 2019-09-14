@@ -256,6 +256,13 @@ def sizeof(filename):
 
 
 def tobytes(num):
+    """
+    Convert the long value of file size in human readable format.
+
+    :param: num: The long value to be converted into bytes
+    :returns: size of the file in human readable format.
+    :raises: None
+    """
     kb = 1024.0
     for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:
         if num < kb:

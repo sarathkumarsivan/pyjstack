@@ -57,7 +57,7 @@ def setup():
     :raises: None
     """
     logger.debug('Setting up temporary workspace: %s', workspace)
-    makedirs(workspace)
+    make_dirs(workspace)
 
 
 def cleanup():
@@ -72,7 +72,7 @@ def cleanup():
     shutil.rmtree(workspace)
 
 
-def makedirs(path):
+def make_dirs(path):
     """
     Create a leaf directory and all intermediate ones. Ignores the error
     if the give path (absolute path) exists on the local file system.

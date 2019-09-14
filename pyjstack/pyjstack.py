@@ -272,10 +272,10 @@ def tobytes(num):
 
 def check_java_version():
     """
-    Check the java (JRE) and javac (JDK) version on the system
+    Check the java (JRE) and javac (JDK) version on the system.
 
     :param: None
-    :returns: java (JRE) and javac (JDK) version on the system
+    :returns: java (JRE) and javac (JDK) version on the system.
     :raises: None
     """
     java_version = subprocess.check_output(['java', '-version'], stderr=subprocess.STDOUT)
@@ -284,6 +284,17 @@ def check_java_version():
 
 
 def create_ssh_client(host, port, user, password):
+    """
+    Create an SSH client instance using paramiko. Make sure the SSH service
+    should be up and running on the remote host to establish the connection.
+
+    :param: host: The remote server to run SSH
+    :param: port: The remote server port to run SSH
+    :param: user: Username to login to remote server through SSH.
+    :param: password: Password to login to remote server through SSH.
+    :returns: java (JRE) and javac (JDK) version on the system.
+    :raises: None
+    """
     client = paramiko.SSHClient()
     client.load_system_host_keys()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())

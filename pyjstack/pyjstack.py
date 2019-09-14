@@ -90,7 +90,7 @@ def make_dirs(path):
             raise
 
 
-def find_processes(name):
+def find_process(name):
     """
     Find the list of processes running on the current node by process name. It uses
     the ps Unix command to access information about processes running on your system.
@@ -110,7 +110,7 @@ def find_processes(name):
     return output
 
 
-def find_java_processes():
+def find_java_process():
     """
     Find the list of Java processes running on the current node.
 
@@ -118,7 +118,7 @@ def find_java_processes():
     :returns: output: The console output contains the process details.
     :raises: None
     """
-    return find_processes('java')
+    return find_process('java')
 
 
 def get_options(args):
@@ -294,7 +294,7 @@ def main():
         execute(options)
     else:
         logger.info("Finding all the Java processes")
-        print(find_java_processes())
+        print(find_java_process())
         pid = input("Which process would you like to choose?: ")
         options.pid = pid
         execute(options)

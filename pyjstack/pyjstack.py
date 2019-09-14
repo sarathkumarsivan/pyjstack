@@ -243,6 +243,13 @@ def execute(options):
 
 
 def sizeof(filename):
+    """
+    Get the size of the file in human readable format.
+
+    :param: filename: Name or absolute path of the file.
+    :returns: size of the file in human readable format.
+    :raises: None
+    """
     if os.path.isfile(filename):
         file_info = os.stat(filename)
         return tobytes(file_info.st_size)

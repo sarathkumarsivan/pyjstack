@@ -271,6 +271,13 @@ def tobytes(num):
 
 
 def check_java_version():
+    """
+    Check the java (JRE) and javac (JDK) version on the system
+
+    :param: None
+    :returns: java (JRE) and javac (JDK) version on the system
+    :raises: None
+    """
     java_version = subprocess.check_output(['java', '-version'], stderr=subprocess.STDOUT)
     javac_version = subprocess.check_output(['javac', '-version'], stderr=subprocess.STDOUT)
     return java_version, javac_version

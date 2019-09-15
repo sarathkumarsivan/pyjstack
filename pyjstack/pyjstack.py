@@ -247,7 +247,8 @@ def execute(options):
     logger.debug('Creating archive %s from %s', archive, workspace)
     make_tarfile(archive, workspace)
     size = sizeof(archive)
-    logger.info('Done, count: %s [Path: %s, Size on Disk: %s]', count, archive, size)
+    path = os.path.abspath(archive)
+    logger.info('Done, count: %s [Filename: %s, Size on Disk: %s, Path: %s]', count, archive, size, path)
 
 
 def sizeof(filename):

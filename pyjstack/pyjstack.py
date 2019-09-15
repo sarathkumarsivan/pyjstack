@@ -302,10 +302,23 @@ def create_ssh_client(host, port, user, password):
     return client
 
 
-def scp(host, port, user, password, source, target):
+def scp(host, port, user, password, source, destination):
+    """
+    Copies files between hosts on a network. It uses ssh(1) for data transfer,
+    and uses the same authentication and provides the same security as ssh(1).
+
+    :param: host: Hostname or IP Address of the remote server.
+    :param: port: SSH port, default is 22
+    :param: user: Username to login to remote server through SSH.
+    :param: password: Password to login to remote server through SSH.
+    :param: source: Absolute path of the source file to copy
+    :param: destination: Destination directory path on the remote server.
+    :returns: None
+    :raises: None
+    """
     ssh = create_ssh_client(host, port, user, password)
     scp = SCPClient(ssh.get_transport())
-    scp.put(source, target)
+    scp.put(source, destination)
     scp.close()
 
 

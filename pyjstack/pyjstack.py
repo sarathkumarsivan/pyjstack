@@ -252,10 +252,10 @@ def sizeof(filename):
     """
     if os.path.isfile(filename):
         file_info = os.stat(filename)
-        return tobytes(file_info.st_size)
+        return to_bytes(file_info.st_size)
 
 
-def tobytes(num):
+def to_bytes(num):
     """
     Convert the long value of file size in human readable format.
 

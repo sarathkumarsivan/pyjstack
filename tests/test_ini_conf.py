@@ -1,18 +1,16 @@
 import unittest
 import os
-import configparser
 from pyjstack.sysconfig import read_ini_conf
-
-CONF_PATH = 'conf/pyjstack-conf.ini'
+from pyjstack import CONF_INI_PATH
 
 
 class TestINIConfMethods(unittest.TestCase):
 
     def test_init_conf_exists(self):
-        self.assertEquals(os.path.exists(CONF_PATH), True)
+        self.assertEquals(os.path.exists(CONF_INI_PATH), True)
 
     def test_read_ini_conf(self):
-        conf = read_ini_conf(CONF_PATH)
+        conf = read_ini_conf(CONF_INI_PATH)
         print conf.sections()
         self.assertEqual(conf.get('email', 'email'), 'user@gmail.com')
         self.assertEqual(conf.get('email', 'from_email'), 'user@pyjstack.com')

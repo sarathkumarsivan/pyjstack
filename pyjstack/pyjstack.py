@@ -149,6 +149,9 @@ def get_options(args):
         '--force', required=False,
         help='Force a stack dump when jstack [-l] pid does not respond.')
     parser.add_argument(
+        '--user', required=False,
+        help='Owner of the Java process')
+    parser.add_argument(
         '--smtp-server', required=False,
         help='SMTP server for email dispatch')
     parser.add_argument(
@@ -201,13 +204,13 @@ def jstack(options):
     """
     path = '{workspace}/jstack.{pid}.$(date +%\s.%N)'.format(workspace=workspace, pid=options.pid)
     logger.debug('path: %s', path)
-    command = 'jstack -l {pid} > {path}'.format(pid=options.pid, path=path)
+    command = 'sudo -u {user} jstack -l {pid} > {path}'.format(user=options.user, pid=options.pid, path=path)
     status = os.system(command)
     logger.debug('status: %s', status)
 
     if status != 0:
         logger.debug('Forcing to collect the stack trace')
-        command = 'jstack -F -l {pid} > {path}'.format(pid=options.pid, path=path)
+        command = 'sudo -u {user} jstack -F -l {pid} > {path}'.format(user=options.user, pid=options.pid, path=path)
         logger.debug('status: %s', status)
 
 

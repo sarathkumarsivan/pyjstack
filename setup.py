@@ -62,7 +62,8 @@ setup(name='pyjstack',
           'six',
           'configparser',
           'paramiko',
-          'scp'
+          'scp',
+          'lxml'
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],

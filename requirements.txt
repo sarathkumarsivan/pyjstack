@@ -6,3 +6,4 @@ six
 configparser
 paramiko
 scp
+lxml

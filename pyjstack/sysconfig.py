@@ -110,7 +110,7 @@ def read_yaml_conf(filename):
     :raises: None
     """
     with open(filename, 'r') as conf_file:
-        return yaml.load(conf_file)
+        return yaml.load(conf_file, Loader=yaml.FullLoader)
     return None
 
 
@@ -154,6 +154,6 @@ def read_xml_conf(filename):
     """
     with open(filename) as f:
         content = f.read()
-    conf = BeautifulSoup(content)
+    conf = BeautifulSoup(content, features='lxml')
     return conf
-    
+

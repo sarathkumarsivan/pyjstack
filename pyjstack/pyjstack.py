@@ -146,6 +146,9 @@ def get_options(args):
         '--delay', required=False, default=1, type=int,
         help='Delay in between collecting thread dumps (in seconds)')
     parser.add_argument(
+        '--force', required=False,
+        help='Force a stack dump when jstack [-l] pid does not respond.')
+    parser.add_argument(
         '--smtp-server', required=False,
         help='SMTP server for email dispatch')
     parser.add_argument(
@@ -198,9 +201,14 @@ def jstack(options):
     """
     path = '{workspace}/jstack.{pid}.$(date +%\s.%N)'.format(workspace=workspace, pid=options.pid)
     logger.debug('path: %s', path)
-    command = 'jstack -F -l {pid} > {path}'.format(pid=options.pid, path=path)
+    command = 'jstack -l {pid} > {path}'.format(pid=options.pid, path=path)
     status = os.system(command)
     logger.debug('status: %s', status)
+
+    if status != 0:
+        logger.debug('Forcing to collect the stack trace')
+        command = 'jstack -F -l {pid} > {path}'.format(pid=options.pid, path=path)
+        logger.debug('status: %s', status)
 
 
 def make_tarfile(output_filename, source_dir):

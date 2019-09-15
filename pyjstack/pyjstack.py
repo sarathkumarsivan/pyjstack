@@ -198,7 +198,7 @@ def jstack(options):
     """
     path = '{workspace}/jstack.{pid}.$(date +%\s.%N)'.format(workspace=workspace, pid=options.pid)
     logger.debug('path: %s', path)
-    command = 'jstack -F -l {pid} > {path}'.format(pid=pid, path=path)
+    command = 'jstack -F -l {pid} > {path}'.format(pid=options.pid, path=path)
     status = os.system(command)
     logger.debug('status: %s', status)
 

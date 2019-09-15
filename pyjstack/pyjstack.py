@@ -95,7 +95,7 @@ def find_process(name):
     Find the list of processes running on the current node by process name. It uses
     the ps Unix command to access information about processes running on your system.
     Using the -f option for ps you can gain additional useful information on each
-    process in the listing: usernames (UID), process ID (PID), parent process ID (PPID)
+    process in the listing: username (UID), process ID (PID), parent process ID (PPID)
     and full command lines (not just the process name).
 
     :param: name: Process name to be searched on your system to list the processes

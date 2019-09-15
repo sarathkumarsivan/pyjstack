@@ -187,18 +187,18 @@ def get_options(args):
     return options
 
 
-def jstack(pid):
+def jstack(options):
     """
     Get the Java stack traces of Java threads for a given Java process or
     core file or a remote debug server.
 
-    :param: pid: process id for which the stack trace is to be printed.
+    :param: options: options to collect the stack trace.
     :returns: Java stack traces of Java threads for a given Java process.
     :raises: None
     """
-    path = '{workspace}/jstack.{pid}.$(date +%\s.%N)'.format(workspace=workspace, pid=pid)
+    path = '{workspace}/jstack.{pid}.$(date +%\s.%N)'.format(workspace=workspace, pid=options.pid)
     logger.debug('path: %s', path)
-    command = 'jstack -l {pid} > {path}'.format(pid=pid, path=path)
+    command = 'jstack -F -l {pid} > {path}'.format(pid=pid, path=path)
     status = os.system(command)
     logger.debug('status: %s', status)
 
@@ -231,7 +231,7 @@ def execute(options):
     count = options.count
     while count > 0:
         logger.debug('Running instance: %s', count)
-        jstack(options.pid)
+        jstack(options)
         time.sleep(options.delay)
         count -= 1
     timestamp = datetime.utcnow().strftime('%Y%m%d%H%M%S')
@@ -336,14 +336,14 @@ def main():
     logger.setLevel(level=logging.DEBUG)
     setup()
     logger.info("options: %s", options)
-    if options.pid:
-        execute(options)
-    else:
+
+    if not options.pid:
         logger.info("Finding all the Java processes")
         print(find_java_process())
         pid = input("Which process would you like to choose?: ")
         options.pid = pid
-        execute(options)
+
+    execute(options)
     cleanup()
     logger.info("Task completed in %s seconds" % (time.time() - start_time))
 

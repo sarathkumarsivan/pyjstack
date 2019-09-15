@@ -1,13 +1,12 @@
 import unittest
 from pyjstack.sysconfig import read_json_conf
-
-CONF_PATH = 'conf/pyjstack-conf.json'
+from pyjstack import CONF_INI_PATH
 
 
 class TestJSONConfMethods(unittest.TestCase):
 
     def test_read_json_conf(self):
-        conf = read_json_conf(CONF_PATH)
+        conf = read_json_conf(CONF_INI_PATH)
         email = conf['email']
         self.assertEqual(email['from_email'], 'user@pyjstack.com')
         self.assertEqual(email['smptp_server'], 'smtp.cloud.com')

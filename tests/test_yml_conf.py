@@ -1,12 +1,11 @@
 import unittest
 
 from pyjstack.sysconfig import read_yaml_conf
-
-CONF_PATH = 'conf/pyjstack-conf.yml'
+from pyjstack import CONF_INI_PATH
 
 
 class TestYMLConfMethods(unittest.TestCase):
 
     def test_read_json_conf(self):
-        conf = read_yaml_conf(CONF_PATH)
+        conf = read_yaml_conf(CONF_INI_PATH)
 

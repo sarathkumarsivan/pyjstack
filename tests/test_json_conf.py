@@ -22,6 +22,7 @@ class TestJSONConfMethods(unittest.TestCase):
         self.assertEqual(jstack['pid'], '10023')
         self.assertEqual(jstack['count'], '12')
         self.assertEqual(jstack['delay'], '2')
+        self.assertEqual(jstack['user'], 'user1')
 
 
 if __name__ == '__main__':

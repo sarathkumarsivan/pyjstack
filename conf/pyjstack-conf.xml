@@ -18,5 +18,6 @@
       <pid>10023</pid>
       <count>12</count>
       <delay>2</delay>
+      <user>user1</user>
    </jstack>
 </config>

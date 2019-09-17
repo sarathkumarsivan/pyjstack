@@ -24,6 +24,7 @@ class TestINIConfMethods(unittest.TestCase):
         self.assertEqual(conf.get('jstack','pid'), '10023')
         self.assertEqual(conf.get('jstack','count'), '12')
         self.assertEqual(conf.get('jstack','delay'), '2')
+        self.assertEqual(conf.get('jstack', 'user'), 'user1')
 
 
 if __name__ == '__main__':

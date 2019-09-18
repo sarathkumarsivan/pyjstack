@@ -19,8 +19,6 @@ class TestINIConfMethods(unittest.TestCase):
         self.assertEqual(conf.get('email', 'attachment'), '/tmp/pyjstack/attachment.tar.gz')
         self.assertEqual(conf.get('email', 'password'), 'secret')
         self.assertEqual(conf.get('email', 'subject'), 'Email Notification')
-        #self.assertEqual(conf.get('email', 'to_email')[0], 'user1@gmail.com')
-        #self.assertEqual(conf.get('email', 'to_email')[1], 'user2@gmail.com')
         self.assertEqual(conf.get('jstack','pid'), '10023')
         self.assertEqual(conf.get('jstack','count'), '12')
         self.assertEqual(conf.get('jstack','delay'), '2')

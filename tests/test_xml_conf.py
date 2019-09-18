@@ -10,6 +10,8 @@ class TestXMLConfMethods(unittest.TestCase):
         conf = read_xml_conf(CONF_XML_PATH)
         self.assertEqual(conf.email.email.contents[0], 'user@gmail.com')
         self.assertEqual(conf.email.password.contents[0], 'secret')
+        self.assertEqual(conf.email.smptp_server.contents[0], 'smtp.cloud.com')
+        self.assertEqual(conf.email.smtp_port.contents[0], '25')
 
 
 if __name__ == '__main__':

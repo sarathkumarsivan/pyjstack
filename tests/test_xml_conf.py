@@ -8,8 +8,8 @@ class TestXMLConfMethods(unittest.TestCase):
 
     def test_read_json_conf(self):
         conf = read_xml_conf(CONF_XML_PATH)
-        print(conf.email.email)
-        print(conf.email.password)
+        self.assertEqual(conf.email.email.contents[0], 'user@gmail.com')
+        self.assertEqual(conf.email.password.contents[0], 'secret')
 
 
 if __name__ == '__main__':

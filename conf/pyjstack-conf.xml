@@ -7,9 +7,9 @@
       <smtp_port>25</smtp_port>
       <from_email>user@pyjstack.com</from_email>
       <to_email>
-         <li>user1@gmail.com</li>
-         <li>user2@gmail.com</li>
-         <li>user3@gmail.com</li>
+         <email>user1@gmail.com</email>
+         <email>user2@gmail.com</email>
+         <email>user3@gmail.com</email>
       </to_email>
       <subject>Email Notification</subject>
       <attachment>/tmp/pyjstack/attachment.tar.gz</attachment>

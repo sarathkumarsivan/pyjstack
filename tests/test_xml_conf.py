@@ -12,6 +12,7 @@ class TestXMLConfMethods(unittest.TestCase):
         self.assertEqual(conf.email.password.contents[0], 'secret')
         self.assertEqual(conf.email.smptp_server.contents[0], 'smtp.cloud.com')
         self.assertEqual(conf.email.smtp_port.contents[0], '25')
+        self.assertEqual(conf.email.from_email.contents[0], 'user@pyjstack.com')
 
 
 if __name__ == '__main__':

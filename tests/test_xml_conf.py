@@ -22,7 +22,7 @@ class TestXMLConfMethods(unittest.TestCase):
         self.assertEqual(conf.jstack.pid.contents[0], '10023')
         self.assertEqual(conf.jstack.count.contents[0], '12')
         self.assertEqual(conf.jstack.delay.contents[0], '2')
-
+        self.assertEqual(conf.jstack.user.contents[0], 'user1')
 
 if __name__ == '__main__':
     unittest.main()

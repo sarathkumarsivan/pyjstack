@@ -17,6 +17,8 @@ class TestXMLConfMethods(unittest.TestCase):
         for tag in conf.to_email.email:
             print(tag)
 
+        self.assertEqual(conf.email.subject.contents[0], 'Email Notification')
+
 
 if __name__ == '__main__':
     unittest.main()

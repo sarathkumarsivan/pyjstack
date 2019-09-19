@@ -18,6 +18,7 @@ class TestXMLConfMethods(unittest.TestCase):
             print(tag)
 
         self.assertEqual(conf.email.subject.contents[0], 'Email Notification')
+        self.assertEqual(conf.email.attachment.contents[0], '/tmp/pyjstack/attachment.tar.gz')
 
 
 if __name__ == '__main__':

@@ -8,9 +8,6 @@ class TestYMLConfMethods(unittest.TestCase):
 
     def test_read_json_conf(self):
         conf = read_yaml_conf(CONF_YML_PATH)
-
-        for section in conf:
-            print(section)
-
-        print(conf['email'])
+        self.assertEqual(conf['email']['email'], 'user@gmail.com')
+        self.assertEqual(conf['email']['email'], 'user@gmail.com')
 

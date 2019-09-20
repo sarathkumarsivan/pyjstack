@@ -14,6 +14,8 @@ class TestXMLConfMethods(unittest.TestCase):
         self.assertEqual(conf.email.smtp_port.contents[0], '25')
         self.assertEqual(conf.email.from_email.contents[0], 'user@pyjstack.com')
 
+        print len(conf.to_email.email)
+
         for tag in conf.to_email.email:
             print(tag)
 

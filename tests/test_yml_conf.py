@@ -12,3 +12,5 @@ class TestYMLConfMethods(unittest.TestCase):
         for section in conf:
             print(section)
 
+        print(conf['email'])
+
